@@ -23,6 +23,7 @@ GameObject::GameObject() {
     this->bouncyness = 1;
     this->sizeX = 0;
     this->sizeY = 0;
+    this->massInv = 0;
 };
 
 GameObject::GameObject(std::string path, SDL_Renderer *renderer, int sizeX, int sizeY) {
@@ -39,6 +40,7 @@ GameObject::GameObject(std::string path, SDL_Renderer *renderer, int sizeX, int 
     this->bouncyness = 1;
     this->sizeX = sizeX;
     this->sizeY = sizeY;
+    this->massInv = 0;
 
 }
 
@@ -139,6 +141,7 @@ bool GameObject::create(std::string path, SDL_Renderer *renderer, int sizeX, int
     this->velocity[1] = 0;
     this->sizeX = sizeX;
     this->sizeY = sizeY;
+    this->massInv = 0;
     return true;
 }
 

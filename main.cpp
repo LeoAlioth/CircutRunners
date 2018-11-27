@@ -18,22 +18,20 @@ int level[10][16] = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                     {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                      {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-                     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+                     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}};
 
-void handleEvent(SDL_Event *e, GameObject *edi) {
+void handleEvent(GameObject *edi) {
 
-    if (e->type == SDL_MOUSEBUTTONDOWN || SDL_MOUSEMOTION) {
-        int x, y;
-        SDL_GetMouseState(&x, &y);
-        if (edi->getPosX() < x)
-            edi->setPosition(edi->getPosX() + 1, edi->getPosY());
-        if (edi->getPosX() > x)
-            edi->setPosition(edi->getPosX() - 1, edi->getPosY());
-    }
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    if (edi->getPosX() < x)
+        edi->setPosition(edi->getPosX() + 1, edi->getPosY());
+    if (edi->getPosX() > x)
+        edi->setPosition(edi->getPosX() - 1, edi->getPosY());
 
 }
 
@@ -55,7 +53,7 @@ int main(int argc, char *args[]) {
         GameObject Edi("assets/Edison/EdisonWalking.png", MainRenderer.getRenderer(), 64, 64);
         std::cout << "moving" << std::endl;
         Edi.setPosition(192, 32);
-        //Edi.setVelocity(5, 0);
+        Edi.setVelocity(0, 0);
         std::cout << "adding" << std::endl;
         mainScene.addObject(&Edi);
 
@@ -81,7 +79,7 @@ int main(int argc, char *args[]) {
             while (SDL_PollEvent(&e) != 0) {
                 //User requests quit
                 //std::cout << e.type  << std::endl;
-                //handleEvent(&e, &Edi);
+                handleEvent(&Edi);
                 if (e.type == SDL_QUIT) {
                     quit = true;
                 }

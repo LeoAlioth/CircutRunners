@@ -21,6 +21,7 @@ private:
     double rotationalSpeed;
     double bouncyness;
     int sizeX, sizeY;
+    double massInv;
     std::vector<double>velocity;
     SDL_Rect part;
     SDL_Texture * objectTexture;
