@@ -18,7 +18,8 @@ private:
 public:
     Physics();
     bool update(std::vector<GameObject*> gameObjects);
-    bool checkCollisions(std::vector<GameObject*> gameObjects);
+    bool collisions(std::vector<GameObject*> gameObjects);
+    bool resolveCollision(GameObject * go1, GameObject * go2);
 
 };
 

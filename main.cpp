@@ -96,6 +96,7 @@ int main(int argc, char *args[]) {
             //printf("X: %f, Y: %f\n", Edi.getPosX(), Edi.getPosY());
 
             MainPhysics.update(mainScene.getVisibleObjects());
+            MainPhysics.collisions(mainScene.getVisibleObjects());
             MainRenderer.render(mainScene.getVisibleObjects());
 
         }

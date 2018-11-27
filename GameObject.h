@@ -66,6 +66,7 @@ public:
     bool setStatic();
 
     int isMovable();
+
     std::vector<double> getVelocity();
 
     SDL_Texture * getTexture();
